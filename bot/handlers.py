@@ -43,7 +43,7 @@ async def payment_markup(qris_price, trakteer_price, duration):
     keyboard = [
         [InlineKeyboardButton("QRIS", callback_data=f"raze_qris_{qris_price}_{duration}")],
         # [InlineKeyboardButton("Trakteer", callback_data=f"raze_trakteer_{trakteer_price}_{duration}")],
-        [InlineKeyboardButton("🔙 Kembali", callback_data="raze_back")],
+        [InlineKeyboardButton("ðŸ”™ Kembali", callback_data="raze_back")],
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     return reply_markup
@@ -52,7 +52,7 @@ async def permanent_markup():
     keyboard = [
         [InlineKeyboardButton("QRIS", callback_data=f"raze_permanen_qris")],
         # [InlineKeyboardButton("Trakteer", callback_data=f"raze_permanen_trakteer")],
-        [InlineKeyboardButton("🔙 Kembali", callback_data="raze_back")]
+        [InlineKeyboardButton("ðŸ”™ Kembali", callback_data="raze_back")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     return reply_markup
@@ -60,7 +60,7 @@ async def permanent_markup():
 async def indo_vvip_markup():
     keyboard = [
         [InlineKeyboardButton("QRIS", callback_data=f"raze_indo_vvip_qris")],
-        [InlineKeyboardButton("🔙 Kembali", callback_data="raze_back")]
+        [InlineKeyboardButton("ðŸ”™ Kembali", callback_data="raze_back")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     return reply_markup
@@ -70,7 +70,7 @@ async def promo_markup():
         [InlineKeyboardButton(f"{promo['monthly']['label']}", callback_data=f"raze_promo_monthly_qris")],
         [InlineKeyboardButton(f"{promo['permanent']['label']}", callback_data=f"raze_promo_permanent_qris")],
         [InlineKeyboardButton(f"{promo['indo_vvip']['label']}", callback_data=f"raze_promo_indo_vvip_qris")],
-        [InlineKeyboardButton("🔙 Kembali", callback_data="raze_back")]
+        [InlineKeyboardButton("ðŸ”™ Kembali", callback_data="raze_back")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     return reply_markup
@@ -94,15 +94,15 @@ async def force_sub_channel(update: Update, context: ContextTypes.DEFAULT_TYPE) 
 
         # Kirim pesan dengan tombol untuk join channel
         keyboard = [
-            [InlineKeyboardButton("✅ JOIN CHANNEL", url=f"https://t.me/{Config.FORCE_SUB_CHANNEL_NAME}")],
-            [InlineKeyboardButton("🔄 REFRESH", callback_data="refresh")]
+            [InlineKeyboardButton("âœ… JOIN CHANNEL", url=f"https://t.me/{Config.FORCE_SUB_CHANNEL_NAME}")],
+            [InlineKeyboardButton("ðŸ”„ REFRESH", callback_data="refresh")]
         ]
         reply_markup = InlineKeyboardMarkup(keyboard)
 
         await context.bot.send_message(
             chat_id=user.id,
             text=(
-                "🚨 Anda harus bergabung dengan channel kami terlebih dahulu untuk menggunakan bot ini!\n\n"
+                "ðŸš¨ Anda harus bergabung dengan channel kami terlebih dahulu untuk menggunakan bot ini!\n\n"
                 "<blockquote>note:\njika sudah klik ' JOIN CHANNEL ' lalu klik ' REFRESH '</blockquote>"
             ),
             reply_markup=reply_markup,
@@ -123,7 +123,7 @@ async def refresh_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if member.status in ["creator", "administrator", "member"]:
             # Jika sudah join, ubah pesan menjadi notifikasi sukses
             await query.edit_message_text(
-                text="✅ Terima kasih, Anda telah bergabung dengan channel kami. Silakan klik /start untuk melanjutkan.",
+                text="âœ… Terima kasih, Anda telah bergabung dengan channel kami. Silakan klik /start untuk melanjutkan.",
                 reply_markup=None,
             )
             return
@@ -132,15 +132,15 @@ async def refresh_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # Jika masih belum join, tampilkan kembali pesan dan keyboard yang sama
     keyboard = [
-        [InlineKeyboardButton("✅ JOIN CHANNEL", url=f"https://t.me/{Config.FORCE_SUB_CHANNEL_NAME}")],
-        [InlineKeyboardButton("🔄 REFRESH", callback_data="refresh")]
+        [InlineKeyboardButton("âœ… JOIN CHANNEL", url=f"https://t.me/{Config.FORCE_SUB_CHANNEL_NAME}")],
+        [InlineKeyboardButton("ðŸ”„ REFRESH", callback_data="refresh")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
 
     try:
         await query.edit_message_text(
             text=(
-                "🚨 Anda belum bergabung dengan channel kami. Silakan join terlebih dahulu untuk menggunakan bot ini!\n\n"
+                "ðŸš¨ Anda belum bergabung dengan channel kami. Silakan join terlebih dahulu untuk menggunakan bot ini!\n\n"
                 "<blockquote>note:\njika sudah klik ' JOIN CHANNEL ' lalu klik ' REFRESH '</blockquote>"
             ),
             reply_markup=reply_markup,
@@ -159,14 +159,14 @@ async def start_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not is_subscribed:
         return
     caption = (
-        f"✨Halo, {first_name} !\n\n"
+        f"âœ¨Halo, {first_name} !\n\n"
         "Selamat datang di BOT GROUP VIP\n\n"
         "Contoh grup dan preview media: @livexrecord\n\n"
         "Berikut perintah yang tersedia:\n"
         "/order - Untuk join group VIP\n"
         "/status - Untuk melihat status VIP anda\n"
         "/promo - Untuk melihat promo yang tersedia\n\n"
-        "Jangan ragu untuk menggunakan salah satu perintah ini untuk berinteraksi dengan bot🎉\n\n"
+        "Jangan ragu untuk menggunakan salah satu perintah ini untuk berinteraksi dengan botðŸŽ‰\n\n"
         "<blockquote>Note: Global payment with Dollar $ , please contact support @Ibrawashere</blockquote>"
     )
     await update.message.reply_text(text=caption, parse_mode=ParseMode.HTML)
@@ -192,12 +192,12 @@ async def order_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
     caption = (
         "<blockquote>"
-        f"Halo {update.effective_user.first_name} 👋 Ingin order apa hari ini? ✨\n\n"
+        f"Halo {update.effective_user.first_name} ðŸ‘‹ Ingin order apa hari ini? âœ¨\n\n"
         "Bot ini dibuat khusus untuk memudahkan kamu mendapatkan akses ke GROUP RECORD VIP kami yang berisi:\n\n"
-        "📱 Ribuan koleksi video berkualitas\n"
-        "🔥 Update video terbaru setiap hari\n"
-        "⚡ Akses cepat dan mudah\n\n"
-        "Silahkan gunakan tombol di bawah untuk mendapatkan akses VIP 🚀"
+        "ðŸ“± Ribuan koleksi video berkualitas\n"
+        "ðŸ”¥ Update video terbaru setiap hari\n"
+        "âš¡ Akses cepat dan mudah\n\n"
+        "Silahkan gunakan tombol di bawah untuk mendapatkan akses VIP ðŸš€"
         "</blockquote>"
     )
     reply_markup = await order_markup()
@@ -215,9 +215,9 @@ async def raze_group_callback_handler(update: Update, context: ContextTypes.DEFA
         invite_link = await create_invite_link(context.bot)
         caption = (
             "<blockquote>"
-            "🎉 Anda masih memiliki langganan VIP aktif!\n\n"
-            f"🔥 Klik link ini untuk join grup VIP: <a href='{invite_link}'>Join VIP</a>\n"
-            "⚠️ Link akan kadaluarsa dalam 5 menit!"
+            "ðŸŽ‰ Anda masih memiliki langganan VIP aktif!\n\n"
+            f"ðŸ”¥ Klik link ini untuk join grup VIP: <a href='{invite_link}'>Join VIP</a>\n"
+            "âš ï¸ Link akan kadaluarsa dalam 5 menit!"
             "</blockquote>"
         )
         try:
@@ -240,7 +240,7 @@ async def raze_group_callback_handler(update: Update, context: ContextTypes.DEFA
     keyboard = [
         [InlineKeyboardButton(i['label'], callback_data=f"raze_subscribe_{i['price']['qris']}_{i['price']['trakteer']}_{i['duration']}")] for i in pricing
     ]
-    keyboard.append([InlineKeyboardButton("🔙 Kembali", callback_data="raze_back")])
+    keyboard.append([InlineKeyboardButton("ðŸ”™ Kembali", callback_data="raze_back")])
     reply_markup = InlineKeyboardMarkup(keyboard)
     try:
         await update.callback_query.edit_message_text(
@@ -260,8 +260,8 @@ async def raze_subscribe_callback_handler(update: Update, context: ContextTypes.
     duration = int(data[2])
     caption = (
         "<blockquote>"
-        "🛒Order\n\n"
-        f"💰 IDR: {qris_price}\n\n"
+        "ðŸ›’Order\n\n"
+        f"ðŸ’° IDR: {qris_price}\n\n"
         "Pilih metode pembayaran:"
         "</blockquote>"
     )
@@ -283,8 +283,8 @@ async def raze_permanen_callback_handler(update: Update, context: ContextTypes.D
         invite_link = "https://t.me/LIVERECORDFILEBOT"
         caption = (
             "<blockquote>"
-            "🎉 Anda sudah berlangganan!\n\n"
-            f"🔥 Klik link ini untuk akses: <a href='{invite_link}'>Akses VIP</a>\n"
+            "ðŸŽ‰ Anda sudah berlangganan!\n\n"
+            f"ðŸ”¥ Klik link ini untuk akses: <a href='{invite_link}'>Akses VIP</a>\n"
             "</blockquote>"
         )
         try:
@@ -302,7 +302,7 @@ async def raze_permanen_callback_handler(update: Update, context: ContextTypes.D
         "KONTEN VIDEO V2: BOT\n"
         "- PERMANEN\n"
         "- UPDATE SETIAP MINGGU\n\n"
-        f"💰 IDR: {life_time['qris']}"
+        f"ðŸ’° IDR: {life_time['qris']}"
         "</blockquote>"
     )
     reply_markup = await permanent_markup()
@@ -322,7 +322,7 @@ async def raze_permanen_qris_callback_handler(update: Update, context: ContextTy
     if await qris_repository.qris.find_one({"user_id": user_id}):
         try:
             await update.callback_query.edit_message_text(
-                text="⚠️ Anda masih memiliki order yang sedang berlangsung.\n\nSilahkan batalkan order dengan perintah /cancel terlebih dahulu sebelum melakukan order baru."
+                text="âš ï¸ Anda masih memiliki order yang sedang berlangsung.\n\nSilahkan batalkan order dengan perintah /cancel terlebih dahulu sebelum melakukan order baru."
             )
         except:
             pass
@@ -343,12 +343,12 @@ async def raze_permanen_qris_callback_handler(update: Update, context: ContextTy
         pass
     caption = (
         "<blockquote>"
-        "🔃 Scan QRIS ini untuk pembayaran.\n\n"
-        f"💰 <b>Jumlah:</b> Rp {total_price}\n"
-        f"⏳ <b>Expired:</b> {qris_expired.strftime('%H:%M:%S WIB')}\n\n"
-        "⏰ QRIS akan kadaluarsa dalam 10 menit."
+        "ðŸ”ƒ Scan QRIS ini untuk pembayaran.\n\n"
+        f"ðŸ’° <b>Jumlah:</b> Rp {total_price}\n"
+        f"â³ <b>Expired:</b> {qris_expired.strftime('%H:%M:%S WIB')}\n\n"
+        "â° QRIS akan kadaluarsa dalam 10 menit."
         "</blockquote>"
-    )
+    )    
     msg = await update.callback_query.message.reply_photo(
         qris_url,
         caption=caption,
@@ -357,7 +357,7 @@ async def raze_permanen_qris_callback_handler(update: Update, context: ContextTy
     await qris_repository.add_qris(user_id, msg.id, duration, qris_code, qris_url, qris_expired.astimezone(UTC))
     
     context.job_queue.run_repeating(
-        check_qris_payment, interval=10, first=5, user_id=user_id,
+        check_qris_payment, interval=60, first=30, user_id=user_id,
         data={
             "total_price": total_price, 
             "user_id": user_id, 
@@ -373,13 +373,13 @@ async def raze_permanen_trakteer_callback_handler(update: Update, context: Conte
     first_name = update.callback_query.from_user.first_name
     price = life_time['trakteer']
     payment_url = f"https://trakteer.id/{Config.TRAKTEER_USERNAME}/tip?quantity={price}&step=2&display_name={first_name}&supporter_message=order_vip_{user_id}_lifetime"
-    keyboard = [[InlineKeyboardButton("💸 Bayar Sekarang", web_app=WebAppInfo(url=payment_url))]]
+    keyboard = [[InlineKeyboardButton("ðŸ’¸ Bayar Sekarang", web_app=WebAppInfo(url=payment_url))]]
     reply_markup = InlineKeyboardMarkup(keyboard)
     try:
         await update.callback_query.edit_message_text(
             "<blockquote>"
-            "🛒Order\n\nKlik tombol dibawah untuk membayar.\n\n"
-            f"⚠️<b>Jangan ubah text pada kolom pesan untuk memastikan pembayaran anda berhasil.</b>"
+            "ðŸ›’Order\n\nKlik tombol dibawah untuk membayar.\n\n"
+            f"âš ï¸<b>Jangan ubah text pada kolom pesan untuk memastikan pembayaran anda berhasil.</b>"
             "</blockquote>",
             reply_markup=reply_markup,
             parse_mode=ParseMode.HTML
@@ -396,9 +396,9 @@ async def raze_indo_vvip_callback_handler(update: Update, context: ContextTypes.
         invite_link = await create_indo_vvip_invite_link(context.bot)
         caption = (
             "<blockquote>"
-            "🎉 Anda sudah berlangganan!\n\n"
-            f"🔥 Klik link ini untuk join grup INDO VIP: <a href='{invite_link}'>Join VIP</a>\n"
-            "⚠️ Link akan kadaluarsa dalam 5 menit!"
+            "ðŸŽ‰ Anda sudah berlangganan!\n\n"
+            f"ðŸ”¥ Klik link ini untuk join grup INDO VIP: <a href='{invite_link}'>Join VIP</a>\n"
+            "âš ï¸ Link akan kadaluarsa dalam 5 menit!"
             "</blockquote>"
         )
         try:
@@ -415,7 +415,7 @@ async def raze_indo_vvip_callback_handler(update: Update, context: ContextTypes.
         "BOKEP VIRAL INDO VVIP: GRUP\n"
         "- PERMANEN\n"
         "- UPDATE SETIAP HARI\n\n"
-        f"💰 IDR: {indo_vvip_price['qris']}"
+        f"ðŸ’° IDR: {indo_vvip_price['qris']}"
         "</blockquote>"
     )
     reply_markup = await indo_vvip_markup()
@@ -435,7 +435,7 @@ async def raze_indo_vvip_qris_callback_handler(update: Update, context: ContextT
     if await qris_repository.qris.find_one({"user_id": user_id}):
         try:
             await update.callback_query.edit_message_text(
-                text="⚠️ Anda masih memiliki order yang sedang berlangsung.\n\nSilahkan batalkan order dengan perintah /cancel terlebih dahulu sebelum melakukan order baru."
+                text="âš ï¸ Anda masih memiliki order yang sedang berlangsung.\n\nSilahkan batalkan order dengan perintah /cancel terlebih dahulu sebelum melakukan order baru."
             )
         except:
             pass
@@ -456,10 +456,10 @@ async def raze_indo_vvip_qris_callback_handler(update: Update, context: ContextT
         pass
     caption = (
         "<blockquote>"
-        "🔃 Scan QRIS ini untuk pembayaran.\n\n"
-        f"💰 <b>Jumlah:</b> Rp {total_price}\n"
-        f"⏳ <b>Expired:</b> {qris_expired.strftime('%H:%M:%S WIB')}\n\n"
-        "⏰ QRIS akan kadaluarsa dalam 10 menit."
+        "ðŸ”ƒ Scan QRIS ini untuk pembayaran.\n\n"
+        f"ðŸ’° <b>Jumlah:</b> Rp {total_price}\n"
+        f"â³ <b>Expired:</b> {qris_expired.strftime('%H:%M:%S WIB')}\n\n"
+        "â° QRIS akan kadaluarsa dalam 10 menit."
         "</blockquote>"
     )
     msg = await update.callback_query.message.reply_photo(
@@ -470,7 +470,7 @@ async def raze_indo_vvip_qris_callback_handler(update: Update, context: ContextT
     await qris_repository.add_qris(user_id, msg.id, duration, qris_code, qris_url, qris_expired.astimezone(UTC))
     
     context.job_queue.run_repeating(
-        check_qris_payment, interval=10, first=5, user_id=user_id,
+        check_qris_payment, interval=60, first=30, user_id=user_id,
         data={
             "total_price": total_price, 
             "user_id": user_id, 
@@ -490,7 +490,7 @@ async def raze_cctv_callback_handler(update: Update, context: ContextTypes.DEFAU
         "REKAMAN CCTV & NGINTIP\n"
         "- PERMANEN\n"
         "- UPDATE SETIAP HARI\n\n"
-        f"💰 IDR: {cctv_price['qris']}"
+        f"ðŸ’° IDR: {cctv_price['qris']}"
         "</blockquote>"
     )
     reply_markup = await cctv_markup()
@@ -510,7 +510,7 @@ async def raze_cctv_qris_callback_handler(update: Update, context: ContextTypes.
     if await qris_repository.qris.find_one({"user_id": user_id}):
         try:
             await update.callback_query.edit_message_text(
-                text="⚠️ Anda masih memiliki order yang sedang berlangsung.\n\nSilahkan batalkan order dengan perintah /cancel terlebih dahulu sebelum melakukan order baru."
+                text="âš ï¸ Anda masih memiliki order yang sedang berlangsung.\n\nSilahkan batalkan order dengan perintah /cancel terlebih dahulu sebelum melakukan order baru."
             )
         except:
             pass
@@ -531,10 +531,10 @@ async def raze_cctv_qris_callback_handler(update: Update, context: ContextTypes.
         pass
     caption = (
         "<blockquote>"
-        "🔃 Scan QRIS ini untuk pembayaran.\n\n"
-        f"💰 <b>Jumlah:</b> Rp {total_price}\n"
-        f"⏳ <b>Expired:</b> {qris_expired.strftime('%H:%M:%S WIB')}\n\n"
-        "⏰ QRIS akan kadaluarsa dalam 10 menit."
+        "ðŸ”ƒ Scan QRIS ini untuk pembayaran.\n\n"
+        f"ðŸ’° <b>Jumlah:</b> Rp {total_price}\n"
+        f"â³ <b>Expired:</b> {qris_expired.strftime('%H:%M:%S WIB')}\n\n"
+        "â° QRIS akan kadaluarsa dalam 10 menit."
         "</blockquote>"
     )
     msg = await update.callback_query.message.reply_photo(
@@ -545,7 +545,7 @@ async def raze_cctv_qris_callback_handler(update: Update, context: ContextTypes.
     await qris_repository.add_qris(user_id, msg.id, duration, qris_code, qris_url, qris_expired.astimezone(UTC))
     
     context.job_queue.run_repeating(
-        check_qris_payment, interval=10, first=5, user_id=user_id,
+        check_qris_payment, interval=60, first=30, user_id=user_id,
         data={
             "total_price": total_price, 
             "user_id": user_id, 
@@ -567,7 +567,7 @@ async def raze_ometv_callback_handler(update: Update, context: ContextTypes.DEFA
         "REKAMAN OME TV\n"
         "- PERMANEN\n"
         "- UPDATE SETIAP HARI\n\n"
-        f"💰 IDR: {ometv_price['qris']}"
+        f"ðŸ’° IDR: {ometv_price['qris']}"
         "</blockquote>"
     )
     reply_markup = await ometv_markup()
@@ -587,7 +587,7 @@ async def raze_ometv_qris_callback_handler(update: Update, context: ContextTypes
     if await qris_repository.qris.find_one({"user_id": user_id}):
         try:
             await update.callback_query.edit_message_text(
-                text="⚠️ Anda masih memiliki order yang sedang berlangsung.\n\nSilahkan batalkan order dengan perintah /cancel terlebih dahulu sebelum melakukan order baru."
+                text="âš ï¸ Anda masih memiliki order yang sedang berlangsung.\n\nSilahkan batalkan order dengan perintah /cancel terlebih dahulu sebelum melakukan order baru."
             )
         except:
             pass
@@ -608,10 +608,10 @@ async def raze_ometv_qris_callback_handler(update: Update, context: ContextTypes
         pass
     caption = (
         "<blockquote>"
-        "🔃 Scan QRIS ini untuk pembayaran.\n\n"
-        f"💰 <b>Jumlah:</b> Rp {total_price}\n"
-        f"⏳ <b>Expired:</b> {qris_expired.strftime('%H:%M:%S WIB')}\n\n"
-        "⏰ QRIS akan kadaluarsa dalam 10 menit."
+        "ðŸ”ƒ Scan QRIS ini untuk pembayaran.\n\n"
+        f"ðŸ’° <b>Jumlah:</b> Rp {total_price}\n"
+        f"â³ <b>Expired:</b> {qris_expired.strftime('%H:%M:%S WIB')}\n\n"
+        "â° QRIS akan kadaluarsa dalam 10 menit."
         "</blockquote>"
     )
     msg = await update.callback_query.message.reply_photo(
@@ -622,7 +622,7 @@ async def raze_ometv_qris_callback_handler(update: Update, context: ContextTypes
     await qris_repository.add_qris(user_id, msg.id, duration, qris_code, qris_url, qris_expired.astimezone(UTC))
     
     context.job_queue.run_repeating(
-        check_qris_payment, interval=10, first=5, user_id=user_id,
+        check_qris_payment, interval=60, first=30, user_id=user_id,
         data={
             "total_price": total_price, 
             "user_id": user_id, 
@@ -644,7 +644,7 @@ async def raze_jav_callback_handler(update: Update, context: ContextTypes.DEFAUL
         "BOKEP ASEAN JAV\n"
         "- PERMANEN\n"
         "- UPDATE SETIAP HARI\n\n"
-        f"💰 IDR: {jav_price['qris']}"
+        f"ðŸ’° IDR: {jav_price['qris']}"
         "</blockquote>"
     )
     reply_markup = await jav_markup()
@@ -664,7 +664,7 @@ async def raze_jav_qris_callback_handler(update: Update, context: ContextTypes.D
     if await qris_repository.qris.find_one({"user_id": user_id}):
         try:
             await update.callback_query.edit_message_text(
-                text="⚠️ Anda masih memiliki order yang sedang berlangsung.\n\nSilahkan batalkan order dengan perintah /cancel terlebih dahulu sebelum melakukan order baru."
+                text="âš ï¸ Anda masih memiliki order yang sedang berlangsung.\n\nSilahkan batalkan order dengan perintah /cancel terlebih dahulu sebelum melakukan order baru."
             )
         except:
             pass
@@ -685,10 +685,10 @@ async def raze_jav_qris_callback_handler(update: Update, context: ContextTypes.D
         pass
     caption = (
         "<blockquote>"
-        "🔃 Scan QRIS ini untuk pembayaran.\n\n"
-        f"💰 <b>Jumlah:</b> Rp {total_price}\n"
-        f"⏳ <b>Expired:</b> {qris_expired.strftime('%H:%M:%S WIB')}\n\n"
-        "⏰ QRIS akan kadaluarsa dalam 10 menit."
+        "ðŸ”ƒ Scan QRIS ini untuk pembayaran.\n\n"
+        f"ðŸ’° <b>Jumlah:</b> Rp {total_price}\n"
+        f"â³ <b>Expired:</b> {qris_expired.strftime('%H:%M:%S WIB')}\n\n"
+        "â° QRIS akan kadaluarsa dalam 10 menit."
         "</blockquote>"
     )
     msg = await update.callback_query.message.reply_photo(
@@ -699,7 +699,7 @@ async def raze_jav_qris_callback_handler(update: Update, context: ContextTypes.D
     await qris_repository.add_qris(user_id, msg.id, duration, qris_code, qris_url, qris_expired.astimezone(UTC))
     
     context.job_queue.run_repeating(
-        check_qris_payment, interval=10, first=5, user_id=user_id,
+        check_qris_payment, interval=60, first=30, user_id=user_id,
         data={
             "total_price": total_price, 
             "user_id": user_id, 
@@ -744,12 +744,12 @@ async def raze_promo_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
     promo_status = await promo_repository.promo.find_one({"_id": "promo_status"})
     if not promo_status or not promo_status.get("status", False):
-        await update.message.reply_text("⚠️ Tidak ada promo yang berlangsung.")
+        await update.message.reply_text("âš ï¸ Tidak ada promo yang berlangsung.")
         return
 
     reply_markup = await promo_markup()
     await update.message.reply_text(
-        "🎉 PILIH PAKET PROMO\n\n"
+        "ðŸŽ‰ PILIH PAKET PROMO\n\n"
         "<blockquote>"
         f"{promo['monthly']['label']}\n"
         "- TIDAK PERMANEN\n"
@@ -779,7 +779,7 @@ async def raze_promo_monthly_qris_callback_handler(update: Update, context: Cont
     if await qris_repository.qris.find_one({"user_id": user_id}):
         try:
             await update.callback_query.edit_message_text(
-                text="⚠️ Anda masih memiliki order yang sedang berlangsung.\n\nSilahkan batalkan order dengan perintah /cancel terlebih dahulu sebelum melakukan order baru."
+                text="âš ï¸ Anda masih memiliki order yang sedang berlangsung.\n\nSilahkan batalkan order dengan perintah /cancel terlebih dahulu sebelum melakukan order baru."
             )
         except:
             pass
@@ -800,10 +800,10 @@ async def raze_promo_monthly_qris_callback_handler(update: Update, context: Cont
         pass
     caption = (
         "<blockquote>"
-        "🔃 Scan QRIS ini untuk pembayaran.\n\n"
-        f"💰 <b>Jumlah:</b> Rp {total_price}\n"
-        f"⏳ <b>Expired:</b> {qris_expired.strftime('%H:%M:%S WIB')}\n\n"
-        "⏰ QRIS akan kadaluarsa dalam 10 menit."
+        "ðŸ”ƒ Scan QRIS ini untuk pembayaran.\n\n"
+        f"ðŸ’° <b>Jumlah:</b> Rp {total_price}\n"
+        f"â³ <b>Expired:</b> {qris_expired.strftime('%H:%M:%S WIB')}\n\n"
+        "â° QRIS akan kadaluarsa dalam 10 menit."
         "</blockquote>"
     )
     msg = await update.callback_query.message.reply_photo(
@@ -813,7 +813,7 @@ async def raze_promo_monthly_qris_callback_handler(update: Update, context: Cont
     )
     await qris_repository.add_qris(user_id, msg.id, duration, qris_code, qris_url, qris_expired.astimezone(UTC))
     context.job_queue.run_repeating(
-        check_qris_payment, interval=10, first=5, user_id=user_id,
+        check_qris_payment, interval=60, first=30, user_id=user_id,
         data={
             "total_price": total_price, 
             "user_id": user_id, 
@@ -830,7 +830,7 @@ async def raze_promo_permanent_qris_callback_handler(update: Update, context: Co
     if await qris_repository.qris.find_one({"user_id": user_id}):
         try:
             await update.callback_query.edit_message_text(
-                text="⚠️ Anda masih memiliki order yang sedang berlangsung.\n\nSilahkan batalkan order dengan perintah /cancel terlebih dahulu sebelum melakukan order baru."
+                text="âš ï¸ Anda masih memiliki order yang sedang berlangsung.\n\nSilahkan batalkan order dengan perintah /cancel terlebih dahulu sebelum melakukan order baru."
             )
         except:
             pass
@@ -851,10 +851,10 @@ async def raze_promo_permanent_qris_callback_handler(update: Update, context: Co
         pass
     caption = (
         "<blockquote>"
-        "🔃 Scan QRIS ini untuk pembayaran.\n\n"
-        f"💰 <b>Jumlah:</b> Rp {total_price}\n"
-        f"⏳ <b>Expired:</b> {qris_expired.strftime('%H:%M:%S WIB')}\n\n"
-        "⏰ QRIS akan kadaluarsa dalam 10 menit."
+        "ðŸ”ƒ Scan QRIS ini untuk pembayaran.\n\n"
+        f"ðŸ’° <b>Jumlah:</b> Rp {total_price}\n"
+        f"â³ <b>Expired:</b> {qris_expired.strftime('%H:%M:%S WIB')}\n\n"
+        "â° QRIS akan kadaluarsa dalam 10 menit."
         "</blockquote>"
     )
     msg = await update.callback_query.message.reply_photo(
@@ -864,7 +864,7 @@ async def raze_promo_permanent_qris_callback_handler(update: Update, context: Co
     )
     await qris_repository.add_qris(user_id, msg.id, duration, qris_code, qris_url, qris_expired.astimezone(UTC))
     context.job_queue.run_repeating(
-        check_qris_payment, interval=10, first=5, user_id=user_id,
+        check_qris_payment, interval=60, first=30, user_id=user_id,
         data={
             "total_price": total_price, 
             "user_id": user_id, 
@@ -881,7 +881,7 @@ async def raze_promo_indo_vvip_qris_callback_handler(update: Update, context: Co
     if await qris_repository.qris.find_one({"user_id": user_id}):
         try:
             await update.callback_query.edit_message_text(
-                text="⚠️ Anda masih memiliki order yang sedang berlangsung.\n\nSilahkan batalkan order dengan perintah /cancel terlebih dahulu sebelum melakukan order baru."
+                text="âš ï¸ Anda masih memiliki order yang sedang berlangsung.\n\nSilahkan batalkan order dengan perintah /cancel terlebih dahulu sebelum melakukan order baru."
             )
         except:
             pass
@@ -902,10 +902,10 @@ async def raze_promo_indo_vvip_qris_callback_handler(update: Update, context: Co
         pass
     caption = (
         "<blockquote>"
-        "🔃 Scan QRIS ini untuk pembayaran.\n\n"
-        f"💰 <b>Jumlah:</b> Rp {total_price}\n"
-        f"⏳ <b>Expired:</b> {qris_expired.strftime('%H:%M:%S WIB')}\n\n"
-        "⏰ QRIS akan kadaluarsa dalam 10 menit."
+        "ðŸ”ƒ Scan QRIS ini untuk pembayaran.\n\n"
+        f"ðŸ’° <b>Jumlah:</b> Rp {total_price}\n"
+        f"â³ <b>Expired:</b> {qris_expired.strftime('%H:%M:%S WIB')}\n\n"
+        "â° QRIS akan kadaluarsa dalam 10 menit."
         "</blockquote>"
     )
     msg = await update.callback_query.message.reply_photo(
@@ -916,7 +916,7 @@ async def raze_promo_indo_vvip_qris_callback_handler(update: Update, context: Co
     await qris_repository.add_qris(user_id, msg.id, duration, qris_code, qris_url, qris_expired.astimezone(UTC))
     
     context.job_queue.run_repeating(
-        check_qris_payment, interval=10, first=5, user_id=user_id,
+        check_qris_payment, interval=60, first=30, user_id=user_id,
         data={
             "total_price": total_price, 
             "user_id": user_id, 
@@ -946,14 +946,14 @@ async def status_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         expiry_str = expiry_dt.strftime("%d %B %Y, %H:%M %Z")
         await update.message.reply_text(
             "<blockquote>"
-            f"🎉 Anda telah terdaftar sebagai VIP!\n\n"
-            f"📅 <b>Tanggal Kadaluarsa:</b> {expiry_str}\n"
-            f"⏱️ <b>Sisa Waktu:</b> {days} hari, {hours} jam, {minutes} menit"
+            f"ðŸŽ‰ Anda telah terdaftar sebagai VIP!\n\n"
+            f"ðŸ“… <b>Tanggal Kadaluarsa:</b> {expiry_str}\n"
+            f"â±ï¸ <b>Sisa Waktu:</b> {days} hari, {hours} jam, {minutes} menit"
             "</blockquote>",
             parse_mode=ParseMode.HTML
         )
     else:
-        await update.message.reply_text("❌ Anda belum terdaftar sebagai VIP.")
+        await update.message.reply_text("âŒ Anda belum terdaftar sebagai VIP.")
 
 async def tos_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
@@ -969,12 +969,12 @@ async def back_callback_handler(update: Update, context: ContextTypes.DEFAULT_TY
     await update.callback_query.answer()
     caption = (
         "<blockquote>"
-        f"Halo {update.effective_user.first_name} 👋 Ingin order apa hari ini? ✨\n\n"
+        f"Halo {update.effective_user.first_name} ðŸ‘‹ Ingin order apa hari ini? âœ¨\n\n"
         "Bot ini dibuat khusus untuk memudahkan kamu mendapatkan akses ke GROUP RECORD VIP kami yang berisi:\n\n"
-        "📱 Ribuan koleksi video berkualitas\n"
-        "🔥 Update video terbaru setiap hari\n"
-        "⚡ Akses cepat dan mudah\n\n"
-        "Silahkan gunakan tombol di bawah untuk mendapatkan akses VIP 🚀"
+        "ðŸ“± Ribuan koleksi video berkualitas\n"
+        "ðŸ”¥ Update video terbaru setiap hari\n"
+        "âš¡ Akses cepat dan mudah\n\n"
+        "Silahkan gunakan tombol di bawah untuk mendapatkan akses VIP ðŸš€"
         "</blockquote>"
     )
 
@@ -996,7 +996,7 @@ async def qris_callback_handler(update: Update, context: ContextTypes.DEFAULT_TY
     if await qris_repository.qris.find_one({"user_id": user_id}):
         try:
             await update.callback_query.edit_message_text(
-                text="⚠️ Anda masih memiliki order yang sedang berlangsung.\n\nSilahkan batalkan order dengan perintah /cancel terlebih dahulu sebelum melakukan order baru."
+                text="âš ï¸ Anda masih memiliki order yang sedang berlangsung.\n\nSilahkan batalkan order dengan perintah /cancel terlebih dahulu sebelum melakukan order baru."
             )
         except:
             pass
@@ -1017,10 +1017,10 @@ async def qris_callback_handler(update: Update, context: ContextTypes.DEFAULT_TY
         pass
     caption = (
         "<blockquote>"
-        "🔃 Scan QRIS ini untuk pembayaran.\n\n"
-        f"💰 <b>Jumlah:</b> Rp {total_price}\n"
-        f"⏳ <b>Expired:</b> {qris_expired.strftime('%H:%M:%S WIB')}\n\n"
-        "⏰ QRIS akan kadaluarsa dalam 10 menit."
+        "ðŸ”ƒ Scan QRIS ini untuk pembayaran.\n\n"
+        f"ðŸ’° <b>Jumlah:</b> Rp {total_price}\n"
+        f"â³ <b>Expired:</b> {qris_expired.strftime('%H:%M:%S WIB')}\n\n"
+        "â° QRIS akan kadaluarsa dalam 10 menit."
         "</blockquote>"
     )
     msg = await update.callback_query.message.reply_photo(
@@ -1031,7 +1031,7 @@ async def qris_callback_handler(update: Update, context: ContextTypes.DEFAULT_TY
     await qris_repository.add_qris(user_id, msg.id, duration, qris_code, qris_url, qris_expired.astimezone(UTC))
     
     context.job_queue.run_repeating(
-        check_qris_payment, interval=10, first=5, user_id=user_id,
+        check_qris_payment, interval=60, first=30, user_id=user_id,
         data={
             "total_price": total_price, 
             "user_id": user_id, 
@@ -1055,8 +1055,14 @@ async def check_qris_payment(context: ContextTypes.DEFAULT_TYPE):
     
     expiry = order['expiry'].replace(tzinfo=pytz.UTC).astimezone(Config.TIMEZONE)
     msg_id = order['msg_id']
-    
-    histories = get_mutasi("windashop", "1130455:2KE4VHY31vaBi7mDIkf5qObWUMLu6gNl")
+    histories = None
+    try:
+        histories = get_mutasi("windashop", "1130455:XfVZSd9x70GJHW4pqBn68ylYU1tAcuEh")
+    except:
+        pass
+    if histories == None:
+        await asyncio.sleep(5)
+        return
     if histories["status"]:
         for history in histories['data']:
             if history['type'] == 'CR' and int(history['amount']) == total_price:
@@ -1085,7 +1091,7 @@ async def check_qris_payment(context: ContextTypes.DEFAULT_TYPE):
             await context.bot.delete_message(chat_id=user_id, message_id=msg_id)
         except:
             pass
-        await context.bot.send_message(chat_id=user_id, text="⚠️ Pembayaran gagal. QRIS telah kadaluarsa.")
+        await context.bot.send_message(chat_id=user_id, text="âš ï¸ Pembayaran gagal. QRIS telah kadaluarsa.")
         await qris_repository.qris.delete_one({"user_id": user_id})
         job.schedule_removal()
 
@@ -1100,9 +1106,9 @@ async def qris_cancel_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
             except:
                 pass
         await qris_repository.remove_qris(user_id)
-        await update.message.reply_text("✅ Order berhasil dibatalkan.")
+        await update.message.reply_text("âœ… Order berhasil dibatalkan.")
     else:
-        await update.message.reply_text("❌ Anda tidak memiliki order yang sedang berlangsung.")
+        await update.message.reply_text("âŒ Anda tidak memiliki order yang sedang berlangsung.")
 
 async def trakteer_callback_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.callback_query.answer()
@@ -1115,8 +1121,8 @@ async def trakteer_callback_handler(update: Update, context: ContextTypes.DEFAUL
     try:
         await update.callback_query.edit_message_text(
             "<blockquote>"
-            "🛒Order\n\nKlik tombol dibawah untuk membayar.\n\n"
-            f"⚠️<b>Jangan ubah text pada kolom pesan untuk memastikan pembayaran anda berhasil.</b>"
+            "ðŸ›’Order\n\nKlik tombol dibawah untuk membayar.\n\n"
+            f"âš ï¸<b>Jangan ubah text pada kolom pesan untuk memastikan pembayaran anda berhasil.</b>"
             "</blockquote>",
             reply_markup=reply_markup,
             parse_mode=ParseMode.HTML
@@ -1130,7 +1136,7 @@ async def admin_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
     await user_repository.add_user(user_id)
     caption = (
-        "🔐Perintah untuk Admin:\n\n"
+        "ðŸ”Perintah untuk Admin:\n\n"
         "/broadcast - Broadcast ke pengguna BOT\n"
         "/vipbroadcast - Broadcast ke member VIP\n"
         "/broadcastpin - Broadcast dengan pin\n"
@@ -1168,7 +1174,7 @@ async def broadcast_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             except:
                 pass
         total_user = await user_repository.users.count_documents({})
-        await update.message.reply_text(f"✅ Berhasil mengirim pesan ke {sent}/{total_user} pengguna.")
+        await update.message.reply_text(f"âœ… Berhasil mengirim pesan ke {sent}/{total_user} pengguna.")
     else:
         await update.message.reply_text("Reply ke pesan yang ingin di-broadcast.")
 
@@ -1195,7 +1201,7 @@ async def vipbroadcast_handler(update: Update, context: ContextTypes.DEFAULT_TYP
             except:
                 pass
         total_user = await user_repository.vip_users.count_documents({})
-        await update.message.reply_text(f"✅ Berhasil mengirim pesan ke {sent}/{total_user} member VIP.")
+        await update.message.reply_text(f"âœ… Berhasil mengirim pesan ke {sent}/{total_user} member VIP.")
     else:
         await update.message.reply_text("Reply ke pesan yang ingin di-broadcast.")
 
@@ -1227,7 +1233,7 @@ async def broadcast_and_pin_handler(update: Update, context: ContextTypes.DEFAUL
             except:
                 pass
         total_user = await user_repository.users.count_documents({})
-        await update.message.reply_text(f"✅ Berhasil mengirim pesan dan menyematkan ke {sent}/{total_user} pengguna.")
+        await update.message.reply_text(f"âœ… Berhasil mengirim pesan dan menyematkan ke {sent}/{total_user} pengguna.")
     else:
         await update.message.reply_text("Reply ke pesan yang ingin di-broadcast.")
 
@@ -1259,7 +1265,7 @@ async def vipbroadcast_and_pin_handler(update: Update, context: ContextTypes.DEF
             except:
                 pass
         total_user = await user_repository.vip_users.count_documents({})
-        await update.message.reply_text(f"✅ Berhasil mengirim pesan dan menyematkan ke {sent}/{total_user} member VIP.")
+        await update.message.reply_text(f"âœ… Berhasil mengirim pesan dan menyematkan ke {sent}/{total_user} member VIP.")
     else:
         await update.message.reply_text("Reply ke pesan yang ingin di-broadcast.")
 
@@ -1309,7 +1315,7 @@ async def add_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         user_id = int(context.args[0])
         months = int(context.args[1])
     except ValueError:
-        await update.message.reply_text("❌ Format salah. Pastikan user_id dan jumlah bulan adalah angka.")
+        await update.message.reply_text("âŒ Format salah. Pastikan user_id dan jumlah bulan adalah angka.")
         return
     user = await user_repository.vip_users.find_one({"user_id": user_id})
     now = datetime.now(UTC).astimezone(Config.TIMEZONE)
@@ -1324,7 +1330,7 @@ async def add_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         upsert=True
     )
     expiry_str = new_expiry.strftime("%d %B %Y, %H:%M %Z")
-    await update.message.reply_text(f"✅ User {user_id} telah ditambahkan/ diperpanjang VIP hingga {expiry_str}.")
+    await update.message.reply_text(f"âœ… User {user_id} telah ditambahkan/ diperpanjang VIP hingga {expiry_str}.")
 
 async def add_indo_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
@@ -1337,18 +1343,18 @@ async def add_indo_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     try:
         user_id = int(context.args[0])
     except ValueError:
-        await update.message.reply_text("❌ Format salah. Pastikan user_id adalah angka.")
+        await update.message.reply_text("âŒ Format salah. Pastikan user_id adalah angka.")
         return
     user = await user_repository.indo_vvip_users.find_one({"user_id": user_id})
     if user:
-        await update.message.reply_text("⚠ User sudah berlangganan!")
+        await update.message.reply_text("âš  User sudah berlangganan!")
         return
     await user_repository.indo_vvip_users.update_one(
         {"user_id": user_id},
         {"$set": {"user_id": user_id}},
         upsert=True
     )
-    await update.message.reply_text(f"✅ User {user_id} telah ditambahkan ke INDO VIP.")
+    await update.message.reply_text(f"âœ… User {user_id} telah ditambahkan ke INDO VIP.")
 
 async def add_cctv_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
@@ -1361,18 +1367,18 @@ async def add_cctv_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     try:
         user_id = int(context.args[0])
     except ValueError:
-        await update.message.reply_text("❌ Format salah. Pastikan user_id adalah angka.")
+        await update.message.reply_text("âŒ Format salah. Pastikan user_id adalah angka.")
         return
     user = await user_repository.cctv_ngintip_users.find_one({"user_id": user_id})
     if user:
-        await update.message.reply_text("⚠ User sudah berlangganan!")
+        await update.message.reply_text("âš  User sudah berlangganan!")
         return
     await user_repository.cctv_ngintip_users.update_one(
         {"user_id": user_id},
         {"$set": {"user_id": user_id}},
         upsert=True
     )
-    await update.message.reply_text(f"✅ User {user_id} telah ditambahkan ke CCTV & NGINTIP VIP.")
+    await update.message.reply_text(f"âœ… User {user_id} telah ditambahkan ke CCTV & NGINTIP VIP.")
 
 async def add_ometv_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
@@ -1385,18 +1391,18 @@ async def add_ometv_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     try:
         user_id = int(context.args[0])
     except ValueError:
-        await update.message.reply_text("❌ Format salah. Pastikan user_id adalah angka.")
+        await update.message.reply_text("âŒ Format salah. Pastikan user_id adalah angka.")
         return
     user = await user_repository.ometv_users.find_one({"user_id": user_id})
     if user:
-        await update.message.reply_text("⚠ User sudah berlangganan!")
+        await update.message.reply_text("âš  User sudah berlangganan!")
         return
     await user_repository.ometv_users.update_one(
         {"user_id": user_id},
         {"$set": {"user_id": user_id}},
         upsert=True
     )
-    await update.message.reply_text(f"✅ User {user_id} telah ditambahkan ke OMETV VIP.")
+    await update.message.reply_text(f"âœ… User {user_id} telah ditambahkan ke OMETV VIP.")
 
 async def add_jav_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
@@ -1409,18 +1415,18 @@ async def add_jav_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     try:
         user_id = int(context.args[0])
     except ValueError:
-        await update.message.reply_text("❌ Format salah. Pastikan user_id adalah angka.")
+        await update.message.reply_text("âŒ Format salah. Pastikan user_id adalah angka.")
         return
     user = await user_repository.asean_jav_users.find_one({"user_id": user_id})
     if user:
-        await update.message.reply_text("⚠ User sudah berlangganan!")
+        await update.message.reply_text("âš  User sudah berlangganan!")
         return
     await user_repository.asean_jav_users.update_one(
         {"user_id": user_id},
         {"$set": {"user_id": user_id}},
         upsert=True
     )
-    await update.message.reply_text(f"✅ User {user_id} telah ditambahkan ke ASEAN JAV VIP.")
+    await update.message.reply_text(f"âœ… User {user_id} telah ditambahkan ke ASEAN JAV VIP.")
 
 async def handle_chat_join_request(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     req = update.chat_join_request
@@ -1430,40 +1436,40 @@ async def handle_chat_join_request(update: Update, context: ContextTypes.DEFAULT
         member = await user_repository.vip_users.find_one({"user_id": user_id})
         if member:
             await context.bot.approve_chat_join_request(chat_id=Config.CHANNEL_ID, user_id=user_id)
-            await context.bot.send_message(user_id, "✅ Permintaan join Anda telah disetujui!")
+            await context.bot.send_message(user_id, "âœ… Permintaan join Anda telah disetujui!")
         else:
             await context.bot.decline_chat_join_request(chat_id=Config.CHANNEL_ID, user_id=user_id)
-            await context.bot.send_message(user_id, "❌ Anda belum berlangganan VIP.")
+            await context.bot.send_message(user_id, "âŒ Anda belum berlangganan VIP.")
     elif req.chat.id == Config.CHANNEL_ID_INDO:
         member = await user_repository.indo_vvip_users.find_one({"user_id": user_id})
         if member:
             await context.bot.approve_chat_join_request(chat_id=Config.CHANNEL_ID_INDO, user_id=user_id)
-            await context.bot.send_message(user_id, "✅ Permintaan join Anda telah disetujui!")
+            await context.bot.send_message(user_id, "âœ… Permintaan join Anda telah disetujui!")
         else:
             await context.bot.decline_chat_join_request(chat_id=Config.CHANNEL_ID_INDO, user_id=user_id)
-            await context.bot.send_message(user_id, "❌ Anda belum berlangganan INDO VIP.")
+            await context.bot.send_message(user_id, "âŒ Anda belum berlangganan INDO VIP.")
     elif req.chat.id == Config.CHANNEL_ID_CCTV:
         member = await user_repository.cctv_ngintip_users.find_one({"user_id": user_id})
         if member:
             await context.bot.approve_chat_join_request(chat_id=Config.CHANNEL_ID_CCTV, user_id=user_id)
-            await context.bot.send_message(user_id, "✅ Permintaan join Anda telah disetujui!")
+            await context.bot.send_message(user_id, "âœ… Permintaan join Anda telah disetujui!")
         else:
             await context.bot.decline_chat_join_request(chat_id=Config.CHANNEL_ID_CCTV, user_id=user_id)
-            await context.bot.send_message(user_id, "❌ Anda belum berlangganan CCTV & NGINTIP VIP.")
+            await context.bot.send_message(user_id, "âŒ Anda belum berlangganan CCTV & NGINTIP VIP.")
     elif req.chat.id == Config.CHANNEL_ID_OMETV:
         member = await user_repository.ometv_users.find_one({"user_id": user_id})
         if member:
             await context.bot.approve_chat_join_request(chat_id=Config.CHANNEL_ID_OMETV, user_id=user_id)
-            await context.bot.send_message(user_id, "✅ Permintaan join Anda telah disetujui!")
+            await context.bot.send_message(user_id, "âœ… Permintaan join Anda telah disetujui!")
         else:
             await context.bot.decline_chat_join_request(chat_id=Config.CHANNEL_ID_OMETV, user_id=user_id)
-            await context.bot.send_message(user_id, "❌ Anda belum berlangganan OMETV VIP.")
+            await context.bot.send_message(user_id, "âŒ Anda belum berlangganan OMETV VIP.")
     elif req.chat.id == Config.CHANNEL_ID_JAV:
         member = await user_repository.asean_jav_users.find_one({"user_id": user_id})
         if member:
             await context.bot.approve_chat_join_request(chat_id=Config.CHANNEL_ID_JAV, user_id=user_id)
-            await context.bot.send_message(user_id, "✅ Permintaan join Anda telah disetujui!")
+            await context.bot.send_message(user_id, "âœ… Permintaan join Anda telah disetujui!")
         else:
             await context.bot.decline_chat_join_request(chat_id=Config.CHANNEL_ID_JAV, user_id=user_id)
-            await context.bot.send_message(user_id, "❌ Anda belum berlangganan ASEAN JAV VIP.")
+            await context.bot.send_message(user_id, "âŒ Anda belum berlangganan ASEAN JAV VIP.")
     
