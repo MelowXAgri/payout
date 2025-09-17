@@ -1,0 +1,94 @@
+{
+    "name": "bot-vip-auto",
+    "description": "A Telegram bot",
+    "repository": "https://github.com/maderio/bot-vip-auto",
+    "stack": "heroku-24",
+    "buildpacks": [
+        {
+            "url": "heroku/python"
+        }
+    ],
+    "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "basic"
+        }
+    },
+    "env": {
+        "BOT_TOKEN": {
+            "description": "Telegram Bot Token",
+            "value": "7583158934:AAF9fzHzTHIEd9Gq1hCkChpGfiWvsbgeBTs",
+            "required": true
+        },
+        "CHANNEL_ID": {
+            "description": "Telegram Channel ID Group VIP",
+            "value": "-1002472785107",
+            "required": true
+        },
+        "CHANNEL_ID_INDO": {
+            "description": "Telegram Channel ID Group INDO VIP",
+            "value": "-1002625960878",
+            "required": true
+        },
+        "CHANNEL_ID_CCTV": {
+            "description": "Telegram Channel ID Group CCTV VIP",
+            "value": "-1002428878056",
+            "required": true
+        },
+        "CHANNEL_ID_OMETV": {
+            "description": "Telegram Channel ID Group OMETV VIP",
+            "value": "-1002555795037",
+            "required": true
+        },
+        "CHANNEL_ID_JAV": {
+            "description": "Telegram Channel ID Group JAV VIP",
+            "value": "-1002625387597",
+            "required": true
+        },
+        "ADMIN_ID": {
+            "description": "Bot Admin ID, split with comma",
+            "value": "1516420756,7481738979,7830551403",
+            "required": true
+        },
+        "FORCE_SUB_CHANNEL_ID": {
+            "description": "Telegram Channel ID Group Force Sub",
+            "value": "-1002368349273",
+            "required": true
+        },
+        "FORCE_SUB_CHANNEL_NAME": {
+            "description": "Telegram Channel Name Group Force Sub",
+            "value": "riyowasheree",
+            "required": true
+        },
+        "MONGO_URI": {
+            "description": "MongoDB URI",
+            "value": "mongodb+srv://raze98fhx:xgM9MDTC4eue333Y@cluster0.nu84e.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+            "required": true
+        },
+        "TRAKTEER_USERNAME": {
+            "description": "Username Trakteer",
+            "value": "riyowasheree",
+            "required": true
+        },
+        "TRAKTEER_WEBHOOK_TOKEN": {
+            "description": "Trakteer Webhook Token",
+            "value": "trhook-zX63nIEJc5m5CVoPMLFfXsz8",
+            "required": true
+        },
+        "TUTORIAL_LINK": {
+            "description": "Link Tutorial",
+            "value": "https://t.me/riyowasheree/12",
+            "required": true
+        },
+        "OK_CONNECT_MEMBER_ID": {
+            "description": "OKConnect member_id",
+            "value": "OK1130455",
+            "required": true
+        },
+        "OK_CONNECT_SIGNATURE": {
+            "description": "OKConnect signature",
+            "value": "372603317404212791130455OKCT99D74F95FAB43728DB3B533F8ED8EC5D",
+            "required": true
+        }
+    }
+}

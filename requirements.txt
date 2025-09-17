@@ -1,0 +1,9 @@
+apscheduler
+fastapi
+pytz
+python-telegram-bot
+python-telegram-bot[job-queue]
+requests
+motor
+gunicorn
+uvicorn
