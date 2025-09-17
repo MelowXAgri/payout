@@ -1,7 +1,7 @@
 {
     "name": "bot-vip-auto",
     "description": "A Telegram bot",
-    "repository": "https://github.com/maderio/bot-vip-auto",
+    "repository": "https://github.com/MelowXAgri/payout",
     "stack": "heroku-24",
     "buildpacks": [
         {
