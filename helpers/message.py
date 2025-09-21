@@ -1,5 +1,5 @@
 template = {
-    "expired_vip": "<blockquote>⚠️ Masa VIP Anda telah habis! Silahkan berlangganan kembali @ibrawashere.</blockquote>"
+    "expired_vip": "<blockquote>⚠️ Masa VIP Anda telah habis! Silahkan berlangganan kembali /order.</blockquote>"
 }
 
 TOS = """<blockquote>• Syarat Layanan {FORMAT_CHANNEL_NAME}
